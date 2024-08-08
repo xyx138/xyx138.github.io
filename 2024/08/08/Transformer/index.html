@@ -16,21 +16,29 @@
   <meta name="author" content="xyx">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="Transformer1. seq2seq模型seq2seq模型是一种用于将一个序列转换为另一个序列的深度学习架构。这种模型最常用于需要输入和输出都是可变长度序列的任务，比如机器翻译、文本生成和语音识别。 2. encode输入一组向量，输出一组向量 encode的内部结构  每个block包括一个自注意力层和全连接神经网络层 但是transformer的encode做了一些额外的操作：  res">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://xyxblog.com/2024/07/09/hello-world/index.html">
+<meta property="og:title" content="Transformer">
+<meta property="og:url" content="http://xyxblog.com/2024/08/08/Transformer/index.html">
 <meta property="og:site_name" content="不如一夜星空">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="Transformer1. seq2seq模型seq2seq模型是一种用于将一个序列转换为另一个序列的深度学习架构。这种模型最常用于需要输入和输出都是可变长度序列的任务，比如机器翻译、文本生成和语音识别。 2. encode输入一组向量，输出一组向量 encode的内部结构  每个block包括一个自注意力层和全连接神经网络层 但是transformer的encode做了一些额外的操作：  res">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-07-09T12:10:35.001Z">
-<meta property="article:modified_time" content="2024-07-09T16:25:51.602Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808215727425.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808220142197.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808221501847.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808223440106.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808223554830.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808224104140.png">
+<meta property="article:published_time" content="2024-08-08T15:09:14.000Z">
+<meta property="article:modified_time" content="2024-08-08T15:11:41.725Z">
 <meta property="article:author" content="xyx">
+<meta property="article:tag" content="transformer">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808215727425.png">
   
   
   
-  <title>Hello World - 不如一夜星空</title>
+  <title>Transformer - 不如一夜星空</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -225,7 +233,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="Transformer"></span>
           
         </div>
 
@@ -236,8 +244,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-09 20:10" pubdate>
-          2024年7月9日 晚上
+        <time datetime="2024-08-08 23:09" pubdate>
+          2024年8月8日 晚上
         </time>
       </span>
     
@@ -248,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          18 字
+          460 字
         
       </span>
     
@@ -259,7 +267,7 @@
         
         
         
-          1 分钟
+          4 分钟
         
       </span>
     
@@ -304,24 +312,37 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header">Transformer</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <h1 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h1><h2 id="1-seq2seq模型"><a href="#1-seq2seq模型" class="headerlink" title="1. seq2seq模型"></a>1. seq2seq模型</h2><p>seq2seq模型是一种用于将一个序列转换为另一个序列的深度学习架构。这种模型最常用于需要输入和输出都是可变长度序列的任务，比如机器翻译、文本生成和语音识别。</p>
+<h2 id="2-encode"><a href="#2-encode" class="headerlink" title="2. encode"></a>2. encode</h2><p>输入一组向量，输出一组向量</p>
+<p>encode的内部结构</p>
+<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808215727425.png" srcset="/img/loading.gif" lazyload alt="image-20240808215727425"></p>
+<p>每个block包括一个<strong>自注意力层</strong>和<strong>全连接神经网络层</strong></p>
+<p>但是transformer的encode做了一些额外的操作：</p>
+<ul>
+<li>residual connection : 某一层的输出向量会加上该层的输入向量</li>
+<li>layer normalization: 向量中的元素会进行归一化处理（正态分布）</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808220142197.png" srcset="/img/loading.gif" lazyload alt="image-20240808220142197"></p>
+<h2 id="3-decode"><a href="#3-decode" class="headerlink" title="3. decode"></a>3. decode</h2><p>结构encode的输出和decode前一步的输出，产生新的输出</p>
+<p>**masked self-attention:**由于decode产生的新输出之能依赖于之前已经产生的输出，所以自注意力只能关注已经生成的向量</p>
+<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808221501847.png" srcset="/img/loading.gif" lazyload alt="image-20240808221501847"></p>
+<p><strong>如何自动结束继续生成：</strong></p>
+<p>END标识来终止继续生成，机器需要自己推断END产生的时机</p>
+<blockquote>
+<p>AT decode的输出是一个接一个产生的，而 NAT decode是一次性输出一整个完整的句子，但是NAT的表现不如AT</p>
+</blockquote>
+<p><strong>cross attention:</strong> decode 的 输出向量 和 encode 的输出 进行注意力机制</p>
+<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808223440106.png" srcset="/img/loading.gif" lazyload alt="image-20240808223440106"></p>
+<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808223554830.png" srcset="/img/loading.gif" lazyload alt="image-20240808223554830"></p>
+<p><strong>训练时将正确答案作为decode的输入：</strong></p>
+<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808224104140.png" srcset="/img/loading.gif" lazyload alt="image-20240808224104140"></p>
+<p><strong>exposure bias：</strong> 暴露偏差指的是序列生成模型在训练时与推理时的输入差异。训练时使用真实的输入序列，但在推理时，模型需要使用自己的预测结果作为输入，这可能导致模型性能下降。</p>
+<p>解决方案：Scheduled Sampling 通过在训练过程中逐渐引入模型的预测结果作为输入来缓解暴露偏差问题。它是一种介于教师强制和完全自我回归（autoregressive）方法之间的训练策略。</p>
 
                 
               </div>
@@ -330,6 +351,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Machine-Learning-2021-Spring/" class="category-chain-item">Machine Learning 2021 Spring</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/transformer/" class="print-no-link">#transformer</a>
+      
+    </div>
   
 </div>
 
@@ -339,8 +388,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>http://xyxblog.com/2024/07/09/hello-world/</div>
+      <div>Transformer</div>
+      <div>http://xyxblog.com/2024/08/08/Transformer/</div>
     </div>
     <div class="license-meta">
       
@@ -352,7 +401,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年7月9日</div>
+          <div>2024年8月8日</div>
         </div>
       
       
@@ -379,6 +428,23 @@
 
 
 
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/08/08/Self-Attention/" title="Self-Attention">
+                        <span class="hidden-mobile">Self-Attention</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
               
             </div>
 

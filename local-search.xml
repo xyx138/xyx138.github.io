@@ -4,25 +4,75 @@
   
   
   <entry>
-    <title>测试文件</title>
-    <link href="/2024/07/09/%E6%B5%8B%E8%AF%95%E6%96%87%E4%BB%B6/"/>
-    <url>/2024/07/09/%E6%B5%8B%E8%AF%95%E6%96%87%E4%BB%B6/</url>
+    <title>Transformer</title>
+    <link href="/2024/08/08/Transformer/"/>
+    <url>/2024/08/08/Transformer/</url>
     
-    <content type="html"><![CDATA[<p><img src="/../images/sixflower.jpg"></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h1><h2 id="1-seq2seq模型"><a href="#1-seq2seq模型" class="headerlink" title="1. seq2seq模型"></a>1. seq2seq模型</h2><p>seq2seq模型是一种用于将一个序列转换为另一个序列的深度学习架构。这种模型最常用于需要输入和输出都是可变长度序列的任务，比如机器翻译、文本生成和语音识别。</p><h2 id="2-encode"><a href="#2-encode" class="headerlink" title="2. encode"></a>2. encode</h2><p>输入一组向量，输出一组向量</p><p>encode的内部结构</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808215727425.png" alt="image-20240808215727425"></p><p>每个block包括一个<strong>自注意力层</strong>和<strong>全连接神经网络层</strong></p><p>但是transformer的encode做了一些额外的操作：</p><ul><li>residual connection : 某一层的输出向量会加上该层的输入向量</li><li>layer normalization: 向量中的元素会进行归一化处理（正态分布）</li></ul><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808220142197.png" alt="image-20240808220142197"></p><h2 id="3-decode"><a href="#3-decode" class="headerlink" title="3. decode"></a>3. decode</h2><p>结构encode的输出和decode前一步的输出，产生新的输出</p><p>**masked self-attention:**由于decode产生的新输出之能依赖于之前已经产生的输出，所以自注意力只能关注已经生成的向量</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808221501847.png" alt="image-20240808221501847"></p><p><strong>如何自动结束继续生成：</strong></p><p>END标识来终止继续生成，机器需要自己推断END产生的时机</p><blockquote><p>AT decode的输出是一个接一个产生的，而 NAT decode是一次性输出一整个完整的句子，但是NAT的表现不如AT</p></blockquote><p><strong>cross attention:</strong> decode 的 输出向量 和 encode 的输出 进行注意力机制</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808223440106.png" alt="image-20240808223440106"></p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808223554830.png" alt="image-20240808223554830"></p><p><strong>训练时将正确答案作为decode的输入：</strong></p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808224104140.png" alt="image-20240808224104140"></p><p><strong>exposure bias：</strong> 暴露偏差指的是序列生成模型在训练时与推理时的输入差异。训练时使用真实的输入序列，但在推理时，模型需要使用自己的预测结果作为输入，这可能导致模型性能下降。</p><p>解决方案：Scheduled Sampling 通过在训练过程中逐渐引入模型的预测结果作为输入来缓解暴露偏差问题。它是一种介于教师强制和完全自我回归（autoregressive）方法之间的训练策略。</p>]]></content>
     
     
     <categories>
       
-      <category>测试</category>
-      
-      <category>测试一级</category>
+      <category>Machine Learning 2021 Spring</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>这是一个测试文件</tag>
+      <tag>transformer</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Self-Attention</title>
+    <link href="/2024/08/08/Self-Attention/"/>
+    <url>/2024/08/08/Self-Attention/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Self-Attention"><a href="#Self-Attention" class="headerlink" title="Self-Attention"></a>Self-Attention</h1><h2 id="1-输入是向量的集合"><a href="#1-输入是向量的集合" class="headerlink" title="1. 输入是向量的集合"></a>1. 输入是向量的集合</h2><ul><li>文本处理，每个字由一个向量表示</li><li>语音处理，每段语音由一个向量表示</li><li>等</li></ul><h2 id="2-输出label数量"><a href="#2-输出label数量" class="headerlink" title="2. 输出label数量"></a>2. 输出label数量</h2><ul><li>每个输入对应一个输出：如词性分析</li><li>若干个输入对应一个输出：如句子的褒贬分析</li><li>由机器决定输出label数量</li></ul><h2 id="3-self-attention"><a href="#3-self-attention" class="headerlink" title="3. self-attention"></a>3. self-attention</h2><blockquote><p>在文本处理中，对一个词的分析往往需要考虑其上下文，甚至某些词需要考虑整个段落，self-attention的提出就是为了让每个词都考虑整个段落而提出的</p></blockquote><p>self-attention的流程如下：</p><ol><li><p>计算当前词和其他词的关联程度，得到一个attention score，并经过softmax</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808185157110.png" alt="image-20240808185157110"></p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808185245657.png" alt="image-20240808185245657"></p></li><li><p>计算每个词的value</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808185323383.png" alt="image-20240808185323383"></p></li><li><p>将每个词的value乘上attention score并累加</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808185347685.png" alt="image-20240808185347685"></p></li><li><p>每个输入是同时经过self-attention层的</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808185451894.png" alt="image-20240808185451894"></p></li></ol><p>矩阵运算</p><ul><li><p>QKV矩阵</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808194758616.png" alt="image-20240808194758616"></p></li><li><p>attentioin score矩阵</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808194953061.png" alt="image-20240808194953061"></p></li><li><p>输出矩阵</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808195052485.png" alt="image-20240808195052485"></p></li></ul><p>综上：公式为</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808195125689.png" alt="image-20240808195125689"></p><h2 id="4-multi-head-self-attention"><a href="#4-multi-head-self-attention" class="headerlink" title="4. multi-head self-attention"></a>4. multi-head self-attention</h2><p><strong>词语之间可能不止一种相关性</strong>，即W矩阵组可能不止一组，<strong>每一组W矩阵组称为一个head</strong>，不同组之间的运算相互独立</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808195435383.png" alt="image-20240808195435383"></p><p>经过不同W组产生的输出向量(b向量),拼接后再与矩阵相乘进行降维</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808195715410.png" alt="image-20240808195715410"></p><h2 id="5-positional-encoding"><a href="#5-positional-encoding" class="headerlink" title="5. positional encoding"></a>5. positional encoding</h2><p>为了体现词在整个序列中的位置，需要引入位置编码，做法是将位置编码加上词向量</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808195913767.png" alt="image-20240808195913767"></p><p>位置编码通常通过sin cos函数尝试，也可以通过学习产生</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Machine Learning 2021 Spring</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>自注意力机制</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>机器学习入门</title>
+    <link href="/2024/08/08/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/"/>
+    <url>/2024/08/08/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/</url>
+    
+    <content type="html"><![CDATA[<h1 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h1><h2 id="1-什么是机器学习"><a href="#1-什么是机器学习" class="headerlink" title="1. 什么是机器学习"></a>1. 什么是机器学习</h2><h3 id="1-1-概括"><a href="#1-1-概括" class="headerlink" title="1.1 概括"></a>1.1 概括</h3><p>让机器具备找一个函数的能力，给机器一个输入，机器能够得到一个输出</p><p><strong>这种函数极为复杂， 需要借助机器实现</strong></p><h3 id="1-2-种类"><a href="#1-2-种类" class="headerlink" title="1.2 种类"></a>1.2 种类</h3><ul><li><p>regression 回归</p></li><li><p>classification 分类</p></li><li><p>strctured learning 创造</p></li></ul><h3 id="1-3-如何实现函数"><a href="#1-3-如何实现函数" class="headerlink" title="1.3 如何实现函数"></a>1.3 如何实现函数</h3><p>以预测youtube的视频观看人数为例</p><ol><li><p>定义一个带有未知参数的函数，根据直观经验进行假设</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240805164233463.png" alt="image-20240805164233463"></p></li><li><p>损失函数（loss function），检验模型的效果</p></li><li><p>优化（optimization），<strong>梯度下降</strong>是常用的手段</p><p>hyperparameters: 在机器学习中，需要认为设定的参数，如学习率、训练次数</p><p>梯度下降的局部最小值是一个假问题？</p><blockquote><p>采用更多的feature能够得到loss更小的model：用前7天的数据作为feature比只用前1天的数据作为feature得到的模型更好</p></blockquote></li></ol><h3 id="1-4-优化线性函数（神经网络）"><a href="#1-4-优化线性函数（神经网络）" class="headerlink" title="1.4 优化线性函数（神经网络）"></a>1.4 优化线性函数（神经网络）</h3><p>线性函数显然无法解决所有问题，一个连续函数通常也不是只有</p><ol><li><p>对于曲线可以通过以直代曲的方式，用0折线去逼近</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240805173650782.png" alt="image-20240805173650782"></p></li><li><p>分段折线可以由多个不同的hard sigmoid函数叠加而成</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240805173726042.png" alt="image-20240805173726042"></p></li><li><p>hard sigmoid 函数可以由 sigmoid函数近似</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240805173741786.png" alt="image-20240805173741786"> **综上： ** <strong>通过叠加不同的sigmoid函数，能够近似出所有连续函数</strong></p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240805173851781.png" alt="image-20240805173851781"></p></li></ol><p>流程图及矩阵表示</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240805173959426.png" alt="image-20240805173959426"></p><blockquote><p>gradient : 损失函数对各个参数的导数组成的向量</p></blockquote><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240805174743696.png" alt="image-20240805174743696"></p><h3 id="1-4-分批训练"><a href="#1-4-分批训练" class="headerlink" title="1.4 分批训练"></a>1.4 分批训练</h3><p>通常将一批（epoch）数据分为n个组（batch），每个组包含若干个样本，每个batch作为一次参数更新使用</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240805180052506.png" alt="image-20240805180052506"></p><h2 id="2-模型问题"><a href="#2-模型问题" class="headerlink" title="2. 模型问题"></a>2. 模型问题</h2><h3 id="2-1-training-data-loss-偏大"><a href="#2-1-training-data-loss-偏大" class="headerlink" title="2.1 training data loss 偏大"></a>2.1 training data loss 偏大</h3><p>这种情况通常是模型的<strong>特征较少</strong>，或者<strong>参数优化</strong>没做好（梯度下降的局部最小值</p><h3 id="2-2-test-data-loss-偏大"><a href="#2-2-test-data-loss-偏大" class="headerlink" title="2.2 test data loss 偏大"></a>2.2 test data loss 偏大</h3><p>这种情况通常是模型<strong>过拟合</strong></p><p>解决方案：</p><ul><li>减少模型参数（神经元数目</li><li>减少样本数量</li><li>early stopping</li><li>regularization</li><li>dropout</li></ul><blockquote><p>限制过多，模型又会出现欠拟合</p></blockquote><h2 id="3-模型优化"><a href="#3-模型优化" class="headerlink" title="3. 模型优化"></a>3. 模型优化</h2><h3 id="3-1-local-minima-和-saddle-point"><a href="#3-1-local-minima-和-saddle-point" class="headerlink" title="3.1 local minima 和 saddle point"></a>3.1 local minima 和 saddle point</h3><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240806213930648.png" alt="image-20240806213930648"></p><p>saddle point 处的导数为0，但是不属于最小值处，该点可以继续优化</p><h4 id="如何区分该点是否为saddle-point"><a href="#如何区分该点是否为saddle-point" class="headerlink" title="如何区分该点是否为saddle point"></a>如何区分该点是否为saddle point</h4><ol><li>计算Hessian metrix, 其中每一元素是对LOSS函数的二阶微分</li></ol><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240806221045878.png" alt="image-20240806221045878"></p><ol start="2"><li><p>计算 Hessian metrix 特征值</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240806221226576.png" alt="image-20240806221226576"></p></li></ol><blockquote><p>局部最小值为什么是假问题：</p><p>通常情况下，神经网络的参数维度成百上千，巨大多数点都为saddle point</p></blockquote><h3 id="3-2-batch"><a href="#3-2-batch" class="headerlink" title="3.2 batch"></a>3.2 batch</h3><h4 id="为什么要用batch"><a href="#为什么要用batch" class="headerlink" title="为什么要用batch"></a>为什么要用batch</h4><p>比较batch size的大小，大的size的运算一批时间小， <strong>因为GPU可以进行平行运算</strong>，大的size更新次数少；</p><p>但是小size的效果往往更好</p><ul><li><p>参数优化的效果更好，因为更新次数多，而每次更新采用的是不同的loss函数，如果参数停在了saddle point, 新的loss可能会让参数走出saddle point</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240807110539215.png" alt="image-20240807110539215"></p></li><li><p>small size 在测试集上的效果更好</p></li></ul><h3 id="3-3-momentum"><a href="#3-3-momentum" class="headerlink" title="3.3 momentum"></a>3.3 momentum</h3><p>解决local minima 和 saddle point 的另一种手段</p><p><strong>通过叠加上一步移动的方向和当前梯度的反方向来决定这一步要走的方向</strong></p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240807111509579.png" alt="image-20240807111509579"></p><h3 id="3-4-learning-rate"><a href="#3-4-learning-rate" class="headerlink" title="3.4 learning rate"></a>3.4 learning rate</h3><ul><li>学习率过大，参数在“山谷“之间来回震荡，无法达到最小值</li><li>学习率过小，对于平缓的“坡度”loss机会无法减小</li></ul><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240807172346742.png" alt="image-20240807172346742"></p><h4 id="如何让学习率自适应"><a href="#如何让学习率自适应" class="headerlink" title="如何让学习率自适应"></a>如何让学习率自适应</h4><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240807173559121.png" alt="image-20240807173559121"></p><p><strong>将当前点的梯度作为学习率的分母的一部分</strong></p><blockquote><p>Adam：集合学习率自适应和方向自适应的优化策略</p></blockquote><h2 id="4-分类问题"><a href="#4-分类问题" class="headerlink" title="4. 分类问题"></a>4. 分类问题</h2><h3 id="4-1-标签如何表示"><a href="#4-1-标签如何表示" class="headerlink" title="4.1 标签如何表示"></a>4.1 标签如何表示</h3><p>采用向量表示不同类，常用的编码方式为独热码</p><h3 id="4-2-softmax"><a href="#4-2-softmax" class="headerlink" title="4.2 softmax"></a>4.2 softmax</h3><p>nn输出的向量（logits）还需要经过softmax操作，才能和label进行比较</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240807175417178.png" alt="image-20240807175417178"></p><p>作用：</p><ul><li>将所有数字至于0-1</li><li>所有数字和为1</li><li>将大的数和小的数的差距拉大</li></ul><h3 id="4-3-cross-entropy-交叉熵"><a href="#4-3-cross-entropy-交叉熵" class="headerlink" title="4.3 cross-entropy (交叉熵)"></a>4.3 cross-entropy (交叉熵)</h3><p>对于分类问题，更常用的是采用交叉熵来定义loss function</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240807175808320.png" alt="image-20240807175808320"></p><h2 id="5-normalization"><a href="#5-normalization" class="headerlink" title="5. normalization"></a>5. normalization</h2><p>Normalization（归一化）技术在深度学习中被广泛使用，以改善模型的训练速度和稳定性。通过对数据或网络层进行归一化，可以使模型更容易优化并提高其泛化能力。</p><p><strong>特征归一化</strong>：对一批样本的<strong>同一维数据</strong>转化为正态分布</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808213951984.png" alt="image-20240808213951984"></p><p><strong>Batch Normalization</strong>:</p><p>神经网络中，不仅要对输入层的数据做归一化，<strong>还要对中间层的数据做归一化</strong>，而归一化需要所有用到的数据，按照一个batch进行归一化的操作为batch normalization</p><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808214327535.png" alt="image-20240808214327535"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Machine Learning 2021 Spring</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>机器学习</tag>
+      
+      <tag>神经网络</tag>
       
     </tags>
     
