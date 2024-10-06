@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>docker无法拉取镜像</title>
+    <link href="/2024/10/06/docker%E6%97%A0%E6%B3%95%E6%8B%89%E5%8F%96%E8%BF%9C%E7%A8%8B%E9%95%9C%E5%83%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <url>/2024/10/06/docker%E6%97%A0%E6%B3%95%E6%8B%89%E5%8F%96%E8%BF%9C%E7%A8%8B%E9%95%9C%E5%83%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+    
+    <content type="html"><![CDATA[<h1 id="docker无法拉取远程镜像解决方案"><a href="#docker无法拉取远程镜像解决方案" class="headerlink" title="docker无法拉取远程镜像解决方案"></a>docker无法拉取远程镜像解决方案</h1><blockquote><p>操作系统：wsl2  Ubuntu-20.04</p><p>docker版本： 27.3.1</p></blockquote><h2 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h2><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20241006141905814.png" alt="image-20241006141905814"></p><p>尝试拉取nginx镜像失败</p><h2 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h2><p><a href="https://developer.aliyun.com/article/1579545">解决方案</a></p><ol><li>修改<code>/etc/docker/daemon.json</code></li></ol><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20241006142518555.png" alt="image-20241006142518555"></p><ol start="2"><li><p>重启docker</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> systemctl daemon-reload<br><span class="hljs-built_in">sudo</span> systemctl restart docker<br></code></pre></td></tr></table></figure></li><li><p>拉取成功</p></li></ol><p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20241006142647893.png" alt="image-20241006142647893"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>docker</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Transformer</title>
     <link href="/2024/08/08/Transformer/"/>
     <url>/2024/08/08/Transformer/</url>
