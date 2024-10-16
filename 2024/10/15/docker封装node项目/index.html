@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20241016155833239.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20241016160151765.png">
 <meta property="article:published_time" content="2024-10-15T14:17:33.000Z">
-<meta property="article:modified_time" content="2024-10-16T08:03:15.409Z">
+<meta property="article:modified_time" content="2024-10-16T08:18:39.079Z">
 <meta property="article:author" content="xyx">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20241016154353081.png">
@@ -252,7 +252,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          356 字
+          461 字
         
       </span>
     
@@ -263,7 +263,7 @@
         
         
         
-          3 分钟
+          4 分钟
         
       </span>
     
@@ -338,6 +338,26 @@
 </li>
 <li><p>访问3000端口，项目部署成功</p>
 <p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20241016160151765.png" srcset="/img/loading.gif" lazyload alt="image-20241016160151765"></p>
+</li>
+<li><p>将镜像推送到远程仓库</p>
+<ol>
+<li><p>给镜像打标记</p>
+<p>需要指定用户名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker tag node-mysql_node-app xyx138/node-mysql:latest<br></code></pre></td></tr></table></figure>
+
+<p>效果如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">(base) wslxyx2@LAPTOP-KA17J01D:~/node-mysql$ docker image <span class="hljs-built_in">ls</span><br>REPOSITORY            TAG       IMAGE ID       CREATED          SIZE<br>node-mysql_node-app   latest    d0b11dbffa50   46 minutes ago   1.11GB<br>xyx138/node-mysql     latest    d0b11dbffa50   46 minutes ago   1.11GB<br><span class="hljs-built_in">test</span>/ubuntu           v1.0      86345dfffe74   42 hours ago     63.2MB<br>myip                  latest    99d0c0376652   42 hours ago     77.5MB<br>nginx                 alpine    cb8f91112b6b   13 days ago      47MB<br>nginx                 latest    7f553e8bbc89   13 days ago      192MB<br>busybox               latest    27a71e19c956   2 weeks ago      4.27MB<br>node                  18        2e348d98bd63   3 months ago     1.09GB<br>mysql                 5.7       5107333e08a8   10 months ago    501MB<br>ubuntu                18.04     f9a80a55f492   16 months ago    63.2MB<br>xyx138/ubuntu         18.04     f9a80a55f492   16 months ago    63.2MB<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>推送</p>
+<p>先登录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker login <br></code></pre></td></tr></table></figure>
+
+<p>再推送</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker push xyx138/node-mysql:latest<br></code></pre></td></tr></table></figure>
+
+<p>结果如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs bash">(base) wslxyx2@LAPTOP-KA17J01D:~/node-mysql$ docker push xyx138/node-mysql:latest<br>The push refers to repository [docker.io/xyx138/node-mysql]<br>96f006e40c42: Pushed<br>0188bc205d6c: Pushed<br>10ebccf26eb4: Pushed<br>3301608ced23: Pushed<br>69bd3a0bcbca: Pushed<br>9c2e3cad5dd9: Pushed<br>46468d86f161: Pushed<br>f48867d95974: Pushed<br>2bce433c3a29: Pushed<br>f91dc7a486d9: Pushed<br>3e14a6961052: Pushed<br>d50132f2fe78: Pushed<br>latest: digest: sha256:e3b52adc153af027a8c3f0ab8fbe40f788c3bc0759df143bd10fa1d2f9945207 size: 2840<br></code></pre></td></tr></table></figure></li>
+</ol>
 </li>
 </ol>
 
