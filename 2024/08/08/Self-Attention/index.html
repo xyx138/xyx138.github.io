@@ -16,12 +16,12 @@
   <meta name="author" content="xyx">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Self-Attention1. 输入是向量的集合 文本处理，每个字由一个向量表示 语音处理，每段语音由一个向量表示 等  2. 输出label数量 每个输入对应一个输出：如词性分析 若干个输入对应一个输出：如句子的褒贬分析 由机器决定输出label数量  3. self-attention 在文本处理中，对一个词的分析往往需要考虑其上下文，甚至某些词需要考虑整个段落，self-attention">
+    <meta name="description" content="Self-Attention 1. 输入是向量的集合  文本处理，每个字由一个向量表示 语音处理，每段语音由一个向量表示 等  2. 输出label数量  每个输入对应一个输出：如词性分析 若干个输入对应一个输出：如句子的褒贬分析 由机器决定输出label数量  3. self-attention  在文本处理中，对一个词的分析往往需要考虑其上下文，甚至某些词需要考虑整个段落，self-atten">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Self-Attention">
 <meta property="og:url" content="http://xyxblog.com/2024/08/08/Self-Attention/index.html">
 <meta property="og:site_name" content="不如一夜星空">
-<meta property="og:description" content="Self-Attention1. 输入是向量的集合 文本处理，每个字由一个向量表示 语音处理，每段语音由一个向量表示 等  2. 输出label数量 每个输入对应一个输出：如词性分析 若干个输入对应一个输出：如句子的褒贬分析 由机器决定输出label数量  3. self-attention 在文本处理中，对一个词的分析往往需要考虑其上下文，甚至某些词需要考虑整个段落，self-attention">
+<meta property="og:description" content="Self-Attention 1. 输入是向量的集合  文本处理，每个字由一个向量表示 语音处理，每段语音由一个向量表示 等  2. 输出label数量  每个输入对应一个输出：如词性分析 若干个输入对应一个输出：如句子的褒贬分析 由机器决定输出label数量  3. self-attention  在文本处理中，对一个词的分析往往需要考虑其上下文，甚至某些词需要考虑整个段落，self-atten">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808185157110.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808185245657.png">
@@ -323,54 +323,67 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Self-Attention"><a href="#Self-Attention" class="headerlink" title="Self-Attention"></a>Self-Attention</h1><h2 id="1-输入是向量的集合"><a href="#1-输入是向量的集合" class="headerlink" title="1. 输入是向量的集合"></a>1. 输入是向量的集合</h2><ul>
+                <h1>Self-Attention</h1>
+<h2 id="1-输入是向量的集合">1. 输入是向量的集合</h2>
+<ul>
 <li>文本处理，每个字由一个向量表示</li>
 <li>语音处理，每段语音由一个向量表示</li>
 <li>等</li>
 </ul>
-<h2 id="2-输出label数量"><a href="#2-输出label数量" class="headerlink" title="2. 输出label数量"></a>2. 输出label数量</h2><ul>
+<h2 id="2-输出label数量">2. 输出label数量</h2>
+<ul>
 <li>每个输入对应一个输出：如词性分析</li>
 <li>若干个输入对应一个输出：如句子的褒贬分析</li>
 <li>由机器决定输出label数量</li>
 </ul>
-<h2 id="3-self-attention"><a href="#3-self-attention" class="headerlink" title="3. self-attention"></a>3. self-attention</h2><blockquote>
+<h2 id="3-self-attention">3. self-attention</h2>
+<blockquote>
 <p>在文本处理中，对一个词的分析往往需要考虑其上下文，甚至某些词需要考虑整个段落，self-attention的提出就是为了让每个词都考虑整个段落而提出的</p>
 </blockquote>
 <p>self-attention的流程如下：</p>
 <ol>
-<li><p>计算当前词和其他词的关联程度，得到一个attention score，并经过softmax</p>
+<li>
+<p>计算当前词和其他词的关联程度，得到一个attention score，并经过softmax</p>
 <p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808185157110.png" srcset="/img/loading.gif" lazyload alt="image-20240808185157110"></p>
 <p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808185245657.png" srcset="/img/loading.gif" lazyload alt="image-20240808185245657"></p>
 </li>
-<li><p>计算每个词的value</p>
+<li>
+<p>计算每个词的value</p>
 <p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808185323383.png" srcset="/img/loading.gif" lazyload alt="image-20240808185323383"></p>
 </li>
-<li><p>将每个词的value乘上attention score并累加</p>
+<li>
+<p>将每个词的value乘上attention score并累加</p>
 <p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808185347685.png" srcset="/img/loading.gif" lazyload alt="image-20240808185347685"></p>
 </li>
-<li><p>每个输入是同时经过self-attention层的</p>
+<li>
+<p>每个输入是同时经过self-attention层的</p>
 <p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808185451894.png" srcset="/img/loading.gif" lazyload alt="image-20240808185451894"></p>
 </li>
 </ol>
 <p>矩阵运算</p>
 <ul>
-<li><p>QKV矩阵</p>
+<li>
+<p>QKV矩阵</p>
 <p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808194758616.png" srcset="/img/loading.gif" lazyload alt="image-20240808194758616"></p>
 </li>
-<li><p>attentioin score矩阵</p>
+<li>
+<p>attentioin score矩阵</p>
 <p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808194953061.png" srcset="/img/loading.gif" lazyload alt="image-20240808194953061"></p>
 </li>
-<li><p>输出矩阵</p>
+<li>
+<p>输出矩阵</p>
 <p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808195052485.png" srcset="/img/loading.gif" lazyload alt="image-20240808195052485"></p>
 </li>
 </ul>
 <p>综上：公式为</p>
 <p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808195125689.png" srcset="/img/loading.gif" lazyload alt="image-20240808195125689"></p>
-<h2 id="4-multi-head-self-attention"><a href="#4-multi-head-self-attention" class="headerlink" title="4. multi-head self-attention"></a>4. multi-head self-attention</h2><p><strong>词语之间可能不止一种相关性</strong>，即W矩阵组可能不止一组，<strong>每一组W矩阵组称为一个head</strong>，不同组之间的运算相互独立</p>
+<h2 id="4-multi-head-self-attention">4. multi-head self-attention</h2>
+<p><strong>词语之间可能不止一种相关性</strong>，即W矩阵组可能不止一组，<strong>每一组W矩阵组称为一个head</strong>，不同组之间的运算相互独立</p>
 <p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808195435383.png" srcset="/img/loading.gif" lazyload alt="image-20240808195435383"></p>
 <p>经过不同W组产生的输出向量(b向量),拼接后再与矩阵相乘进行降维</p>
 <p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808195715410.png" srcset="/img/loading.gif" lazyload alt="image-20240808195715410"></p>
-<h2 id="5-positional-encoding"><a href="#5-positional-encoding" class="headerlink" title="5. positional encoding"></a>5. positional encoding</h2><p>为了体现词在整个序列中的位置，需要引入位置编码，做法是将位置编码加上词向量</p>
+<h2 id="5-positional-encoding">5. positional encoding</h2>
+<p>为了体现词在整个序列中的位置，需要引入位置编码，做法是将位置编码加上词向量</p>
 <p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808195913767.png" srcset="/img/loading.gif" lazyload alt="image-20240808195913767"></p>
 <p>位置编码通常通过sin cos函数尝试，也可以通过学习产生</p>
 

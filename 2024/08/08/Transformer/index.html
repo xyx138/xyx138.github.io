@@ -16,12 +16,12 @@
   <meta name="author" content="xyx">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Transformer1. seq2seq模型seq2seq模型是一种用于将一个序列转换为另一个序列的深度学习架构。这种模型最常用于需要输入和输出都是可变长度序列的任务，比如机器翻译、文本生成和语音识别。 2. encode输入一组向量，输出一组向量 encode的内部结构  每个block包括一个自注意力层和全连接神经网络层 但是transformer的encode做了一些额外的操作：  res">
+    <meta name="description" content="Transformer 1. seq2seq模型 seq2seq模型是一种用于将一个序列转换为另一个序列的深度学习架构。这种模型最常用于需要输入和输出都是可变长度序列的任务，比如机器翻译、文本生成和语音识别。 2. encode 输入一组向量，输出一组向量 encode的内部结构  每个block包括一个自注意力层和全连接神经网络层 但是transformer的encode做了一些额外的操作：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Transformer">
 <meta property="og:url" content="http://xyxblog.com/2024/08/08/Transformer/index.html">
 <meta property="og:site_name" content="不如一夜星空">
-<meta property="og:description" content="Transformer1. seq2seq模型seq2seq模型是一种用于将一个序列转换为另一个序列的深度学习架构。这种模型最常用于需要输入和输出都是可变长度序列的任务，比如机器翻译、文本生成和语音识别。 2. encode输入一组向量，输出一组向量 encode的内部结构  每个block包括一个自注意力层和全连接神经网络层 但是transformer的encode做了一些额外的操作：  res">
+<meta property="og:description" content="Transformer 1. seq2seq模型 seq2seq模型是一种用于将一个序列转换为另一个序列的深度学习架构。这种模型最常用于需要输入和输出都是可变长度序列的任务，比如机器翻译、文本生成和语音识别。 2. encode 输入一组向量，输出一组向量 encode的内部结构  每个block包括一个自注意力层和全连接神经网络层 但是transformer的encode做了一些额外的操作：">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808215727425.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808220142197.png">
@@ -317,8 +317,11 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h1><h2 id="1-seq2seq模型"><a href="#1-seq2seq模型" class="headerlink" title="1. seq2seq模型"></a>1. seq2seq模型</h2><p>seq2seq模型是一种用于将一个序列转换为另一个序列的深度学习架构。这种模型最常用于需要输入和输出都是可变长度序列的任务，比如机器翻译、文本生成和语音识别。</p>
-<h2 id="2-encode"><a href="#2-encode" class="headerlink" title="2. encode"></a>2. encode</h2><p>输入一组向量，输出一组向量</p>
+                <h1>Transformer</h1>
+<h2 id="1-seq2seq模型">1. seq2seq模型</h2>
+<p>seq2seq模型是一种用于将一个序列转换为另一个序列的深度学习架构。这种模型最常用于需要输入和输出都是可变长度序列的任务，比如机器翻译、文本生成和语音识别。</p>
+<h2 id="2-encode">2. encode</h2>
+<p>输入一组向量，输出一组向量</p>
 <p>encode的内部结构</p>
 <p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808215727425.png" srcset="/img/loading.gif" lazyload alt="image-20240808215727425"></p>
 <p>每个block包括一个<strong>自注意力层</strong>和<strong>全连接神经网络层</strong></p>
@@ -328,7 +331,8 @@
 <li>layer normalization: 向量中的元素会进行归一化处理（正态分布）</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808220142197.png" srcset="/img/loading.gif" lazyload alt="image-20240808220142197"></p>
-<h2 id="3-decode"><a href="#3-decode" class="headerlink" title="3. decode"></a>3. decode</h2><p>结构encode的输出和decode前一步的输出，产生新的输出</p>
+<h2 id="3-decode">3. decode</h2>
+<p>结构encode的输出和decode前一步的输出，产生新的输出</p>
 <p>**masked self-attention:**由于decode产生的新输出之能依赖于之前已经产生的输出，所以自注意力只能关注已经生成的向量</p>
 <p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20240808221501847.png" srcset="/img/loading.gif" lazyload alt="image-20240808221501847"></p>
 <p><strong>如何自动结束继续生成：</strong></p>
