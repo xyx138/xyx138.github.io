@@ -16,12 +16,12 @@
   <meta name="author" content="xyx">
   <meta name="keywords" content="">
   
-    <meta name="description" content="docker无法拉取远程镜像解决方案  操作系统：wsl2  Ubuntu-20.04 docker版本： 27.3.1  问题描述：  尝试拉取nginx镜像失败 解决方案： 解决方案  修改&#x2F;etc&#x2F;docker&#x2F;daemon.json     重启docker 12sudo systemctl daemon-reloadsudo systemctl restart docker   拉取成功">
+    <meta name="description" content="docker无法拉取远程镜像解决方案  操作系统：wsl2  Ubuntu-20.04 docker版本： 27.3.1   问题描述：  尝试拉取nginx镜像失败  解决方案： 解决方案  修改&#x2F;etc&#x2F;docker&#x2F;daemon.json     重启docker 12sudo systemctl daemon-reloadsudo systemctl restart docker   拉">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker无法拉取镜像">
 <meta property="og:url" content="http://xyxblog.com/2024/10/06/docker%E6%97%A0%E6%B3%95%E6%8B%89%E5%8F%96%E8%BF%9C%E7%A8%8B%E9%95%9C%E5%83%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/index.html">
 <meta property="og:site_name" content="不如一夜星空">
-<meta property="og:description" content="docker无法拉取远程镜像解决方案  操作系统：wsl2  Ubuntu-20.04 docker版本： 27.3.1  问题描述：  尝试拉取nginx镜像失败 解决方案： 解决方案  修改&#x2F;etc&#x2F;docker&#x2F;daemon.json     重启docker 12sudo systemctl daemon-reloadsudo systemctl restart docker   拉取成功">
+<meta property="og:description" content="docker无法拉取远程镜像解决方案  操作系统：wsl2  Ubuntu-20.04 docker版本： 27.3.1   问题描述：  尝试拉取nginx镜像失败  解决方案： 解决方案  修改&#x2F;etc&#x2F;docker&#x2F;daemon.json     重启docker 12sudo systemctl daemon-reloadsudo systemctl restart docker   拉">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20241006141905814.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20241006142518555.png">
@@ -45,6 +45,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
 
 
 
@@ -313,20 +315,20 @@
             
               <div class="markdown-body">
                 
-                <h1>docker无法拉取远程镜像解决方案</h1>
+                <h1 id="docker无法拉取远程镜像解决方案"><a class="markdownIt-Anchor" href="#docker无法拉取远程镜像解决方案"></a> docker无法拉取远程镜像解决方案</h1>
 <blockquote>
 <p>操作系统：wsl2  Ubuntu-20.04</p>
 <p>docker版本： 27.3.1</p>
 </blockquote>
-<h2 id="问题描述：">问题描述：</h2>
-<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20241006141905814.png" srcset="/img/loading.gif" lazyload alt="image-20241006141905814"></p>
+<h2 id="问题描述"><a class="markdownIt-Anchor" href="#问题描述"></a> 问题描述：</h2>
+<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20241006141905814.png" srcset="/img/loading.gif" lazyload alt="image-20241006141905814" /></p>
 <p>尝试拉取nginx镜像失败</p>
-<h2 id="解决方案：">解决方案：</h2>
+<h2 id="解决方案"><a class="markdownIt-Anchor" href="#解决方案"></a> 解决方案：</h2>
 <p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/1579545">解决方案</a></p>
 <ol>
 <li>修改<code>/etc/docker/daemon.json</code></li>
 </ol>
-<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20241006142518555.png" srcset="/img/loading.gif" lazyload alt="image-20241006142518555"></p>
+<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20241006142518555.png" srcset="/img/loading.gif" lazyload alt="image-20241006142518555" /></p>
 <ol start="2">
 <li>
 <p>重启docker</p>
@@ -336,7 +338,7 @@
 <p>拉取成功</p>
 </li>
 </ol>
-<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20241006142647893.png" srcset="/img/loading.gif" lazyload alt="image-20241006142647893"></p>
+<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20241006142647893.png" srcset="/img/loading.gif" lazyload alt="image-20241006142647893" /></p>
 
                 
               </div>
@@ -519,6 +521,11 @@
 
 
   
+
+
+  
+  
+
 
 
 

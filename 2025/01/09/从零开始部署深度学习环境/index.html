@@ -16,12 +16,12 @@
   <meta name="author" content="xyx">
   <meta name="keywords" content="">
   
-    <meta name="description" content="搭建深度学习环境  9.9租了一天的云服务，结果发现里面没有搭好深度环境，想放弃使用该云服务器了，但转念一想，正好写一篇如何搭建深度学习环境的blog  1. 安装显卡驱动  没有安装nvidia驱动就无法使用nvidia-smi     查询显卡的型号 1lspci | grep -i nvidia    ​	若出现上图所示，没有明确写明显卡名称，可以将最后的数字（此处为2684）输入到该网址查">
+    <meta name="description" content="搭建深度学习环境  9.9租了一天的云服务，结果发现里面没有搭好深度环境，想放弃使用该云服务器了，但转念一想，正好写一篇如何搭建深度学习环境的blog   1. 安装显卡驱动  没有安装nvidia驱动就无法使用nvidia-smi     查询显卡的型号 1lspci | grep -i nvidia    ​	若出现上图所示，没有明确写明显卡名称，可以将最后的数字（此处为2684）输入到该网">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从零开始部署深度学习环境">
 <meta property="og:url" content="http://xyxblog.com/2025/01/09/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83/index.html">
 <meta property="og:site_name" content="不如一夜星空">
-<meta property="og:description" content="搭建深度学习环境  9.9租了一天的云服务，结果发现里面没有搭好深度环境，想放弃使用该云服务器了，但转念一想，正好写一篇如何搭建深度学习环境的blog  1. 安装显卡驱动  没有安装nvidia驱动就无法使用nvidia-smi     查询显卡的型号 1lspci | grep -i nvidia    ​	若出现上图所示，没有明确写明显卡名称，可以将最后的数字（此处为2684）输入到该网址查">
+<meta property="og:description" content="搭建深度学习环境  9.9租了一天的云服务，结果发现里面没有搭好深度环境，想放弃使用该云服务器了，但转念一想，正好写一篇如何搭建深度学习环境的blog   1. 安装显卡驱动  没有安装nvidia驱动就无法使用nvidia-smi     查询显卡的型号 1lspci | grep -i nvidia    ​	若出现上图所示，没有明确写明显卡名称，可以将最后的数字（此处为2684）输入到该网">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20250109211939382.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20250109212100648.png">
@@ -51,6 +51,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
 
 
 
@@ -319,20 +321,20 @@
             
               <div class="markdown-body">
                 
-                <h1>搭建深度学习环境</h1>
+                <h1 id="搭建深度学习环境"><a class="markdownIt-Anchor" href="#搭建深度学习环境"></a> 搭建深度学习环境</h1>
 <blockquote>
 <p>9.9租了一天的云服务，结果发现里面没有搭好深度环境，想放弃使用该云服务器了，但转念一想，正好写一篇如何搭建深度学习环境的blog</p>
 </blockquote>
-<h2 id="1-安装显卡驱动">1. 安装显卡驱动</h2>
+<h2 id="1-安装显卡驱动"><a class="markdownIt-Anchor" href="#1-安装显卡驱动"></a> 1. 安装显卡驱动</h2>
 <ol>
 <li>没有安装nvidia驱动就无法使用nvidia-smi</li>
 </ol>
-<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20250109211939382.png" srcset="/img/loading.gif" lazyload alt="image-20250109211939382"></p>
+<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20250109211939382.png" srcset="/img/loading.gif" lazyload alt="image-20250109211939382" /></p>
 <ol start="2">
 <li>
 <p>查询显卡的型号</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">lspci | grep -i nvidia<br></code></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20250109212100648.png" srcset="/img/loading.gif" lazyload alt="image-20250109212100648"></p>
+<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20250109212100648.png" srcset="/img/loading.gif" lazyload alt="image-20250109212100648" /></p>
 </li>
 </ol>
 <p>​	若出现上图所示，没有明确写明显卡名称，可以将最后的数字（此处为2684）<a target="_blank" rel="noopener" href="https://admin.pci-ids.ucw.cz/mods/PC/10de?action=help?help=pci">输入到该网址查询</a></p>
@@ -340,13 +342,13 @@
 <li>
 <p>查询系统架构</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /proc/version<br></code></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20250109212946060.png" srcset="/img/loading.gif" lazyload alt="image-20250109212946060"></p>
+<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20250109212946060.png" srcset="/img/loading.gif" lazyload alt="image-20250109212946060" /></p>
 </li>
 <li>
 <p>查询对应的驱动型号，<a target="_blank" rel="noopener" href="https://www.nvidia.cn/drivers/lookup/">点击查询</a></p>
-<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20250109213446271.png" srcset="/img/loading.gif" lazyload alt="image-20250109213446271"></p>
+<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20250109213446271.png" srcset="/img/loading.gif" lazyload alt="image-20250109213446271" /></p>
 <p>查询结果如下</p>
-<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20250109213411980.png" srcset="/img/loading.gif" lazyload alt="image-20250109213411980"></p>
+<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20250109213411980.png" srcset="/img/loading.gif" lazyload alt="image-20250109213411980" /></p>
 </li>
 <li>
 <p>根据查询结果，这里我选择安装535</p>
@@ -354,23 +356,23 @@
 </li>
 <li>
 <p>验证结果</p>
-<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20250109220053427.png" srcset="/img/loading.gif" lazyload alt="image-20250109220053427"></p>
+<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20250109220053427.png" srcset="/img/loading.gif" lazyload alt="image-20250109220053427" /></p>
 </li>
 </ol>
-<h2 id="2-安装Anaconda">2. 安装Anaconda</h2>
+<h2 id="2-安装anaconda"><a class="markdownIt-Anchor" href="#2-安装anaconda"></a> 2. 安装Anaconda</h2>
 <blockquote>
 <p>为了验证cuda的安装是否是必要的，我决定先安装conda环境，看能否跑模型</p>
 </blockquote>
 <p>在<a target="_blank" rel="noopener" href="https://www.anaconda.com/download/success">官网</a>获取下载链接</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 下载链接</span><br>wget https://repo.anaconda.com/archive/Anaconda3-2024.10-1-Linux-x86_64.sh<br><br><span class="hljs-comment"># 执行安装</span><br>./Anaconda3-2024.10-1-Linux-x86_64.sh<br><span class="hljs-comment"># 也可以指定安装路径</span><br>bash Anaconda3-2024.10-1-Linux-x86_64.sh -p /opt/anaconda3<br><br><span class="hljs-built_in">source</span> ~/.bashrc<br></code></pre></td></tr></table></figure>
-<h2 id="3-安装pytorch">3. 安装pytorch</h2>
+<h2 id="3-安装pytorch"><a class="markdownIt-Anchor" href="#3-安装pytorch"></a> 3. 安装pytorch</h2>
 <p>直接在<a target="_blank" rel="noopener" href="https://pytorch.org/">官网</a>下载兼容版本cuda版本的对应的pytorch</p>
-<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20250109222201476.png" srcset="/img/loading.gif" lazyload alt="image-20250109222201476"></p>
+<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20250109222201476.png" srcset="/img/loading.gif" lazyload alt="image-20250109222201476" /></p>
 <p>注意：这里的cuda version并不是已安装的cuda版本（显然我的系统还没有安装cuda）这指的是与显卡驱动兼容的最大cuda版本号</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia<br></code></pre></td></tr></table></figure>
-<h2 id="4-验证结果">4. 验证结果</h2>
+<h2 id="4-验证结果"><a class="markdownIt-Anchor" href="#4-验证结果"></a> 4. 验证结果</h2>
 <p>不需要安装cuda也能跑模型</p>
-<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20250109230727396.png" srcset="/img/loading.gif" lazyload alt="image-20250109230727396"></p>
+<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20250109230727396.png" srcset="/img/loading.gif" lazyload alt="image-20250109230727396" /></p>
 
                 
               </div>
@@ -560,6 +562,11 @@
 
 
   
+
+
+  
+  
+
 
 
 

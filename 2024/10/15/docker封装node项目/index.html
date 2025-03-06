@@ -16,12 +16,12 @@
   <meta name="author" content="xyx">
   <meta name="keywords" content="">
   
-    <meta name="description" content="通过docker封装node项目   项目架构    项目根目录创建Dockfile 12345678910111213141516171819# 使用官方 Node.js 镜像作为基础镜像FROM node:18# 设置工作目录WORKDIR &#x2F;app# 复制 package.json 和 package-lock.json 并安装依赖COPY package.json package-lock">
+    <meta name="description" content="通过docker封装node项目   项目架构    项目根目录创建Dockfile 12345678910111213141516171819# 使用官方 Node.js 镜像作为基础镜像FROM node:18# 设置工作目录WORKDIR &#x2F;app# 复制 package.json 和 package-lock.json 并安装依赖COPY package.json package-loc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker封装node项目">
 <meta property="og:url" content="http://xyxblog.com/2024/10/15/docker%E5%B0%81%E8%A3%85node%E9%A1%B9%E7%9B%AE/index.html">
 <meta property="og:site_name" content="不如一夜星空">
-<meta property="og:description" content="通过docker封装node项目   项目架构    项目根目录创建Dockfile 12345678910111213141516171819# 使用官方 Node.js 镜像作为基础镜像FROM node:18# 设置工作目录WORKDIR &#x2F;app# 复制 package.json 和 package-lock.json 并安装依赖COPY package.json package-lock">
+<meta property="og:description" content="通过docker封装node项目   项目架构    项目根目录创建Dockfile 12345678910111213141516171819# 使用官方 Node.js 镜像作为基础镜像FROM node:18# 设置工作目录WORKDIR &#x2F;app# 复制 package.json 和 package-lock.json 并安装依赖COPY package.json package-loc">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20241016154353081.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20241016155833239.png">
@@ -45,6 +45,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
 
 
 
@@ -313,11 +315,11 @@
             
               <div class="markdown-body">
                 
-                <h2 id="通过docker封装node项目">通过docker封装node项目</h2>
+                <h2 id="通过docker封装node项目"><a class="markdownIt-Anchor" href="#通过docker封装node项目"></a> 通过docker封装node项目</h2>
 <ol>
 <li>
 <p>项目架构</p>
-<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20241016154353081.png" srcset="/img/loading.gif" lazyload alt="image-20241016154353081"></p>
+<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20241016154353081.png" srcset="/img/loading.gif" lazyload alt="image-20241016154353081" /></p>
 </li>
 <li>
 <p>项目根目录创建Dockfile</p>
@@ -338,11 +340,11 @@
 <p>创建并启动容器</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker-compose up --build<br></code></pre></td></tr></table></figure>
 <p>这会创建两个容器</p>
-<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20241016155833239.png" srcset="/img/loading.gif" lazyload alt="image-20241016155833239"></p>
+<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20241016155833239.png" srcset="/img/loading.gif" lazyload alt="image-20241016155833239" /></p>
 </li>
 <li>
 <p>访问3000端口，项目部署成功</p>
-<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20241016160151765.png" srcset="/img/loading.gif" lazyload alt="image-20241016160151765"></p>
+<p><img src="https://raw.githubusercontent.com/xyx138/cloudimg/master/img/image-20241016160151765.png" srcset="/img/loading.gif" lazyload alt="image-20241016160151765" /></p>
 </li>
 <li>
 <p>将镜像推送到远程仓库</p>
@@ -548,6 +550,11 @@
 
 
   
+
+
+  
+  
+
 
 
 
