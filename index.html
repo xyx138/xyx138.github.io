@@ -263,7 +263,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2025/03/19/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" target="_self">
         <div>
-          配置环境，解决环境冲突就能花费我一下午的时间，有必要记录一些踩过的坑  1. pytorch 版本相关 transformer  peft  trl 这些库都必须和对应的pytorch版本兼容，否则conda安装这些包的时候会自动更新pytorch的版本，甚至把pytorch调整为cpu版本，南蚌。  2. 尽量不用最新版本 最新版总有些奇奇怪怪的坑，能不用就别用最新版  3. conda设置镜像
+          配置环境，解决环境冲突就能花费我一下午的时间，有必要记录一些踩过的坑 1. 相关包的安装  为了避免不必要的麻烦，每次安装新的包后要重启jupyter内核，至少在vscode这样做能避免很多问题  trl 要用pip安装，用conda走清华源会要求安装cpu版本的pytorch2.5，挺莫名其妙的 1pip install trl==0.14 peft 也要用pip安装 总之，官方没提供conda
         </div>
       </a>
 
